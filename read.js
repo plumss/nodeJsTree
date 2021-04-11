@@ -1,9 +1,17 @@
 const path = require('path');
 const fs = require('fs');
+const readLine = require('readline');
 const isNoRead = ['.git','node_modules','view','src']; //需要过滤的文件夹，文件格式
-getAll()
-function getAll(){
-    const result = readDirAll('/Users/mac/Desktop/code/tc',0)
+const r1 = readLine.createInterface({
+    input:process.stdin,
+    output:process.stdout
+})
+r1.question('输入文件路径',(res)=>{
+    getAll(res)
+    r1.close()
+})
+function getAll(url){
+    const result = readDirAll(url,0)
     writeMdJson(result)
     writeFileTree(result)
 }
